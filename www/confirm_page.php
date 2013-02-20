@@ -78,6 +78,7 @@ include_once("lib/imageResizer.php");
 
 	if($_FILES['userImage']['size']!=0)
 	{
+        $another_commit_test="hello";
 		$max_image_size = 2048 * 1024; //2mb
 		$uploaded_file = $_FILES['userImage']['tmp_name'];
 		$image_type = $_FILES['userImage']['type'];
