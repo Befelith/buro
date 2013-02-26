@@ -13,7 +13,7 @@
     #page-navigation
     {
         border: 2px solid #add8e6;
-        width: 20%;
+        width: 40%;
         height: 10%;
 
     }
@@ -80,7 +80,7 @@ $count = $db->executeQueryUTF($qRowsCount);
 $totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
 $rowsPerPage = 10;
 $totalPages = $totalRowsCount[0] / $rowsPerPage;
-$totalPages = round($totalPages);
+$totalPages = ceil($totalPages);
 //echo $totalPages;
 
 if($totalPages >= 1)
