@@ -31,13 +31,17 @@ $db = new Database();
 
 $db->connect();
 //var_dump($_GET['page']);
+
+//Setting Rows Per Page
+$rowsPerPage = 10;
 if($_GET['page']==NULL)
-    $q = 'SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT 0,10';
+    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT 0,$rowsPerPage";
 if($_GET['page']!=NULL)
 {
     $currentPage = $_GET['page'];
-    $limitStartIndex = ($currentPage."0")-10;
-    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT $limitStartIndex,10";
+    $limitStartIndex = ($currentPage."0")-$rowsPerPage; //For $rowsPerPage = 10;
+    //$limitStartIndex = ($currentPage."0")*2-$rowsPerPage; //$rowsPerPage = 20;
+    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT $limitStartIndex,$rowsPerPage";
 }
 
 $result = $db->executeQueryUTF($q);
@@ -78,10 +82,9 @@ echo "</table>";
 $qRowsCount = 'SELECT COUNT(*) FROM tbl_laf_items';
 $count = $db->executeQueryUTF($qRowsCount);
 $totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
-$rowsPerPage = 10;
+
 $totalPages = $totalRowsCount[0] / $rowsPerPage;
 $totalPages = ceil($totalPages);
-//echo $totalPages;
 
 if($totalPages >= 1)
 {
@@ -93,9 +96,9 @@ if($totalPages >= 1)
     echo '<div id="page-navigation">';
     echo '<ul class="nav-pages">';
     if($prevPage > 0)
-        echo "<li><a class='nav-color' href='/index.php?page=$prevPage'> Туда </a> </li>";
+        echo "<li><a class='nav-color' href='/index.php?page=$prevPage'>&larr;Туда </a> </li>";
     else
-        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Туда </a> </li>";
+        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> &larr;Туда </a> </li>";
 
     for($i=1;$i<=$totalPages;$i++)
     {
@@ -107,9 +110,9 @@ if($totalPages >= 1)
     }
 
     if(($totalPages-$nextPage) >= 0)
-        echo "<li><a class='nav-color' href='/index.php?page=$nextPage'> Сюда </a> </li>";
+        echo "<li><a class='nav-color' href='/index.php?page=$nextPage'> Сюда &rarr;</a> </li>";
     else
-        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Сюда </a> </li>";
+        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Сюда &rarr;</a> </li>"; //&rarr
     echo '</ul>';
     echo '</div>';
 }
