@@ -33,8 +33,8 @@
 					}
 					if($(this).attr('name')=='description')
 					{
-						if(text=="") obj[$(this).attr('name')] = "Описание не может быть короче 12 знаков";
-						else if(text.length<12) obj[$(this).attr('name')] = "Описание не может быть пустым";
+                        if(text=="") obj[$(this).attr('name')] = "Описание не может быть пустым";
+						else if(text.length<12) obj[$(this).attr('name')] = "Описание не может быть короче 12 знаков";
 						else obj[$(this).attr('name')]="OK";
 					}
 					
@@ -46,7 +46,7 @@
 					if($(this).attr('name')=='person')
 					{
 						if(text=="") obj[$(this).attr('name')] = "Пожалуйста, укажите имя контактного лица";
-						else if(text.length<2) obj[$(this).attr('name')] = "Не может быть пустым";
+						else if(text.length<2) obj[$(this).attr('name')] = "Минимум 2 буквы";
 						else obj[$(this).attr('name')]="OK";
 					}
 					if($(this).attr('name')=='email')

@@ -6,8 +6,8 @@
  * Time: 14:39
  * To change this template use File | Settings | File Templates.
  */
-echo "<a href='post_add.php?type=lost'>Потерял</a><br>";
-echo "<a href='post_add.php?type=found'>Нашел</a><br>";
+echo "";
+echo "";
 //header('Content-type: image/jpeg');
 //1 открываем соедениние
 $link = mysql_connect('localhost','root') or die('Failed connection'. mysql_error());

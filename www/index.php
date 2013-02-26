@@ -1,6 +1,10 @@
 <?php header('Content-type: text/html; charset=utf-8');?>
 <html>
 <head>
+    <style type="text/css">
+    .pageNav {list-style-type:none;}
+    .pageNav li {float:left;padding: 4px;}
+    </style>
 </head>
 <body>
 <?php
@@ -17,7 +21,6 @@ $result = $db->executeQueryUTF($q);
 
 echo "<table style=\"border:3px solid #cef;border-collapse: collapse;\">";
 $odd_counter=0;
-
 while($line = mysql_fetch_array($result,MYSQL_ASSOC))
 {
     $odd_counter++;
@@ -48,6 +51,23 @@ while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     echo "</tr>\n";
 }
 echo "</table>";
+
+$qRowsCount = 'SELECT COUNT(*) FROM tbl_laf_items';
+$count = $db->executeQueryUTF($qRowsCount);
+$totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
+echo $totalRowsCount[0]."<br>";
+
+$totalPages = $totalRowsCount[0] / 10;
+echo round($totalPages);
+if($totalPages >= 1)
+{
+    echo '<ul class="pageNav">';
+    for($i=1;$i<$totalPages;$i++)
+    {
+        echo "<li><a href='/index.php?page=$i'> $i </a> </li>";
+    }
+    echo '</ul>';
+}
 
 mysql_free_result($result);
 $db->disconnect();
