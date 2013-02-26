@@ -2,8 +2,22 @@
 <html>
 <head>
     <style type="text/css">
-    .pageNav {list-style-type:none;}
-    .pageNav li {float:left;padding: 4px;}
+    .nav-pages {list-style-type:none;}
+    .nav-pages li {float:left;padding: 4px; margin: 5px;}
+    .nav-color:link, .nav-color:visited {
+        color: blue;
+    }
+    .nav-color:hover {
+        color: red;
+    }
+    #page-navigation
+    {
+        border: 2px solid #add8e6;
+        width: 20%;
+        height: 10%;
+
+    }
+
     </style>
 </head>
 <body>
@@ -16,7 +30,16 @@ include_once("lib/database.php");
 $db = new Database();
 
 $db->connect();
-$q = 'SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items';
+//var_dump($_GET['page']);
+if($_GET['page']==NULL)
+    $q = 'SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT 0,10';
+if($_GET['page']!=NULL)
+{
+    $currentPage = $_GET['page'];
+    $limitStartIndex = ($currentPage."0")-10;
+    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT $limitStartIndex,10";
+}
+
 $result = $db->executeQueryUTF($q);
 
 echo "<table style=\"border:3px solid #cef;border-collapse: collapse;\">";
@@ -55,18 +78,40 @@ echo "</table>";
 $qRowsCount = 'SELECT COUNT(*) FROM tbl_laf_items';
 $count = $db->executeQueryUTF($qRowsCount);
 $totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
-echo $totalRowsCount[0]."<br>";
+$rowsPerPage = 10;
+$totalPages = $totalRowsCount[0] / $rowsPerPage;
+$totalPages = round($totalPages);
+//echo $totalPages;
 
-$totalPages = $totalRowsCount[0] / 10;
-echo round($totalPages);
 if($totalPages >= 1)
 {
-    echo '<ul class="pageNav">';
-    for($i=1;$i<$totalPages;$i++)
+    //echo "Current Page is: ".$_GET['page'];
+    echo $totalPages. '!!!!!!';
+    $currentPage = $_GET['page'];
+    $nextPage = $currentPage+1;
+    $prevPage = $currentPage-1;
+    echo '<div id="page-navigation">';
+    echo '<ul class="nav-pages">';
+    if($prevPage > 0)
+        echo "<li><a class='nav-color' href='/index.php?page=$prevPage'> Туда </a> </li>";
+    else
+        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Туда </a> </li>";
+
+    for($i=1;$i<=$totalPages;$i++)
     {
-        echo "<li><a href='/index.php?page=$i'> $i </a> </li>";
+        if($currentPage==NULL) $currentPage=1;
+        if($i != $currentPage)
+            echo "<li><a class='nav-color' href='/index.php?page=$i'> $i </a> </li>";
+        if($i == $currentPage)
+            echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> $i </a> </li>";
     }
+
+    if(($totalPages-$nextPage) >= 0)
+        echo "<li><a class='nav-color' href='/index.php?page=$nextPage'> Сюда </a> </li>";
+    else
+        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Сюда </a> </li>";
     echo '</ul>';
+    echo '</div>';
 }
 
 mysql_free_result($result);
