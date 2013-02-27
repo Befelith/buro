@@ -1,7 +1,5 @@
 <?php
-echo "<a href='index.php'>Home</a><br>";
-echo "<a href='post_add.php?type=lost'>Потерял</a><br>";
-echo "<a href='post_add.php?type=found'>Нашел</a><br>";
+
 
 include_once("lib/database.php");
 include_once("lib/main_table.php");

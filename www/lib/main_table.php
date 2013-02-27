@@ -2,7 +2,7 @@
 function createMainTable($result)
 {
     $output_table="";
-    $output_table.="<div class='main-table-wrapper'>";
+
     $output_table.= "<table class='main-table' style=\"border:3px solid #cef;border-collapse: collapse;\">";
     $odd_counter=0;
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
@@ -35,7 +35,7 @@ function createMainTable($result)
         $output_table.= "</tr>\n";
     }
     $output_table.= "</table>";
-    $output_table.= "</div>";
+
 
     return $output_table;
 }
