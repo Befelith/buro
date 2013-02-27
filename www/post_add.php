@@ -130,7 +130,7 @@
 					
 					<!--------------------Правила-------------------->
 					<input type="checkbox" name="terms" class="fleft validateSelect finVal" id="termsCB" value="yes"></input>
-					<label for="checkTerms" class="fleft">С <a href="#">правилами</a> ознакомлен</label>
+					<label for="termsCB" class="fleft">С <a href="#">правилами</a> ознакомлен</label>
 					<div class="fleft errorDiv" id="termsError"></div>
 					<div class="clr"></div>
 					

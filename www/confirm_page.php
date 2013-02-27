@@ -1,7 +1,7 @@
 <?php	
 header('Content-type: text/html; charset=utf-8');
 include_once("lib/database.php");
-include_once("lib/imageResizer.php");
+include_once("lib/image_resizer.php");
 	$error='0';
 	if(isset($_POST['title']))
 	{

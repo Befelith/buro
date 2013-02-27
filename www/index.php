@@ -2,126 +2,65 @@
 <html>
 <head>
     <style type="text/css">
-    .nav-pages {list-style-type:none;}
+    .nav-pages {list-style-type:none;} /*-ul*/
     .nav-pages li {float:left;padding: 4px; margin: 5px;}
-    .nav-color:link, .nav-color:visited {
-        color: blue;
-    }
-    .nav-color:hover {
-        color: red;
-    }
-    #page-navigation
-    {
-        border: 2px solid #add8e6;
-        width: 40%;
-        height: 10%;
+    .nav-color:link, .nav-color:visited {color: blue;}
+    .nav-color:hover {color: red; }
+    #page-navigation {border: 2px solid red; height:10%;overflow: hidden;min-width: 800px;min-height:50px;height:50px;width: 50%; margin: 0 auto;display: block;} /*pagination div*/
+    #page-navigation ul{width:400px;margin:0px auto;}
 
+    /*.main-table-wrapper{width: 50%;height: 50%;min-width: 800px; margin: 0 auto;border: 1px solid black;display: block;}*/
+    .main-table{width: 100%;height:100%;}
+    #wrapper {
+        margin: 0 auto; /*это чтоб центрировать контент при превышении max-width*/
+        min-width: 980px;
+        max-width: 1500px;
     }
+
+
+    html, body {margin:0;height:100%;}
+    /*#wrapper {height:auto !important;height:100%;min-height:100%;min-width:800px;}*/
+    #header {height:200px;border: 1px solid #add8e6;}
+    #functionality{height:100px;border: 1px solid #add8e6;}
+    #left {float:left;width:200px;border: 1px solid #add8e6;}
+    #right {float:right;width:200px;border: 1px solid #add8e6;}
+    #center {margin:0 200px 0 200px;border: 1px solid #add8e6;min-width: 560px;}
+    #spacer {height:100px;border: 1px solid #add8e6;}
+    #footer {height:100px;margin-top:-100px;border: 1px solid #add8e6;}
+    .clear {clear:both;}
 
     </style>
 </head>
 <body>
-<?php
-echo "<a href='post_add.php?type=lost'>Потерял</a><br>";
-echo "<a href='post_add.php?type=found'>Нашел</a><br>";
-
-include_once("lib/database.php");
-
-$db = new Database();
-
-$db->connect();
-//var_dump($_GET['page']);
-
-//Setting Rows Per Page
-$rowsPerPage = 10;
-if($_GET['page']==NULL)
-    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT 0,$rowsPerPage";
-if($_GET['page']!=NULL)
-{
-    $currentPage = $_GET['page'];
-    $limitStartIndex = ($currentPage."0")-$rowsPerPage; //For $rowsPerPage = 10;
-    //$limitStartIndex = ($currentPage."0")*2-$rowsPerPage; //$rowsPerPage = 20;
-    $q = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items ORDER BY date_entry DESC LIMIT $limitStartIndex,$rowsPerPage";
-}
-
-$result = $db->executeQueryUTF($q);
-
-echo "<table style=\"border:3px solid #cef;border-collapse: collapse;\">";
-$odd_counter=0;
-while($line = mysql_fetch_array($result,MYSQL_ASSOC))
-{
-    $odd_counter++;
-    echo "<tr>\n";
-    foreach($line as $key=>$value)
-    {
-        if($odd_counter%2!=0)
-        {
-             if($key!='photo_link' and $key!='title' and $key!='id_entry')
-                echo '<td style=" border: 2px solid #cef;background-color: #def;padding:10px;" align="center">'.$value.'</td>';
-            if($key=='title')
-                 echo '<td style=" border: 2px solid #cefn;background-color: #def;padding:10px;" align="center"><a href="image.php?id='.$line["id_entry"].'">'.$value.'</a></td>';
-            if($key=='photo_link')
-                echo '<td style=" border: 2px solid #cef;background-color: #def;padding:10px;" align="center">'.'<img src="'.$value.'" alt="opa" width="50px" height="50px"/>'.'</td>';
-        }
-        else
-        {
-            if($key!='photo_link' and $key!='title'and $key!='id_entry')
-                echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center">'.$value.'</td>';
-            if($key=='title')
-                echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center"><a href="image.php?id='.$line["id_entry"].'">'.$value.'</a></td>';
-            if($key=='photo_link')
-                echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center">'.'<img src="'.$value.'" alt="opa" width="50px" height="50px"/>'.'</td>';
-        }
-
-    }
-
-    echo "</tr>\n";
-}
-echo "</table>";
-
-$qRowsCount = 'SELECT COUNT(*) FROM tbl_laf_items';
-$count = $db->executeQueryUTF($qRowsCount);
-$totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
-
-$totalPages = $totalRowsCount[0] / $rowsPerPage;
-$totalPages = ceil($totalPages);
-
-if($totalPages >= 1)
-{
-    //echo "Current Page is: ".$_GET['page'];
-    echo $totalPages. '!!!!!!';
-    $currentPage = $_GET['page'];
-    $nextPage = $currentPage+1;
-    $prevPage = $currentPage-1;
-    echo '<div id="page-navigation">';
-    echo '<ul class="nav-pages">';
-    if($prevPage > 0)
-        echo "<li><a class='nav-color' href='/index.php?page=$prevPage'>&larr;Туда </a> </li>";
-    else
-        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> &larr;Туда </a> </li>";
-
-    for($i=1;$i<=$totalPages;$i++)
-    {
-        if($currentPage==NULL) $currentPage=1;
-        if($i != $currentPage)
-            echo "<li><a class='nav-color' href='/index.php?page=$i'> $i </a> </li>";
-        if($i == $currentPage)
-            echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> $i </a> </li>";
-    }
-
-    if(($totalPages-$nextPage) >= 0)
-        echo "<li><a class='nav-color' href='/index.php?page=$nextPage'> Сюда &rarr;</a> </li>";
-    else
-        echo "<li><a style='background: #add8e6; padding:2px 6px 2px 6px; color:white;'> Сюда &rarr;</a> </li>"; //&rarr
-    echo '</ul>';
-    echo '</div>';
-}
-
-mysql_free_result($result);
-$db->disconnect();
-
-
-
-?>
+<div id='wrapper'>
+    <div id='header'>
+        <!-- Содержимое хэдэра -->
+        <p>header here</p>
+    </div>
+    <div id="functionality">
+        <!--Управление-->
+        <p>Functional here</p>
+    </div>
+<!--    <div id='container'>-->
+        <p>Container</p>
+        <div id='left'>
+            <!-- Содержимое левой колонки -->
+            <p>Left Column</p>
+        </div>
+        <div id='right'>
+            <!-- Содержимое правой колонки -->
+            <p>Right Column</p>
+        </div>
+        <div id='center'>
+            <!-- Содержимое центральной колонки -->
+            <?php include_once("lib/main.php");?>
+        </div>
+    </div>
+    <div class='clear'></div>
+    <div id='spacer'></div>
+</div>
+<div id='footer'>
+    <!-- Содержимое футера -->
+</div>
 </body>
 </html>
