@@ -2,10 +2,21 @@
 header('Content-type: text/html; charset=utf-8');
 include_once("lib/database.php");
 include_once("lib/image_resizer.php");
+
+function tagCleaner($var)
+{
+    $var = str_replace('"',"",$var);
+    $var = str_replace("'","",$var);
+
+    $var = strip_tags($var);
+    return $var;
+}
 	$error='0';
 	if(isset($_POST['title']))
 	{
 		$title = preg_replace('/\s\s+/', ' ',trim($_POST['title']));
+        $title= tagCleaner($title);
+
 		if(mb_strlen($title,'utf-8')<4)
 		$error='1';
 	}
@@ -30,12 +41,14 @@ include_once("lib/image_resizer.php");
 	if(isset($_POST['description']))
 	{
 		$description = preg_replace('/\s\s+/', ' ',trim($_POST['description']));
+        $description = tagCleaner($description);
 		if(mb_strlen($description,'utf-8')<12)
 		$error='1';
 	}
 	if(isset($_POST['person']))
 	{
 		$person = preg_replace('/\s\s+/', ' ',trim($_POST['person']));
+        $person = tagCleaner($person);
 		if(mb_strlen($person,'utf-8')<2)
 		$error='1';
 		
@@ -49,16 +62,19 @@ include_once("lib/image_resizer.php");
 	if(isset($_POST['phone']))
 	{
 		$phone = $_POST['phone'];
+        $phone = tagCleaner($phone);
 	}
 	if(isset($_POST['icq']))
 	{
 		$icq = preg_replace('/\s\s+/', ' ',trim($_POST['icq']));
+        $icq = tagCleaner($icq);
 		if(mb_strlen($icq,'utf-8')>10)
 		$error='1';
 	}
 	if(isset($_POST['skype']))
 	{
 		$skype = preg_replace('/\s\s+/', ' ',trim($_POST['skype']));
+        $skype = tagCleaner($skype);
 		if(mb_strlen($icq,'utf-8')>32)
 		$error='1';
 	}
@@ -90,13 +106,20 @@ include_once("lib/image_resizer.php");
 	}
 //
 //
-        $db = new Database();
-        $db->connect();
-		$query = "INSERT INTO tbl_laf_items(item_type,category,region,city,title,description,person,email,phone,icq,skype,photo_link,date_entry)
-									values('$item_type','$category','$region','$city','$title','$description','$person','$email','$phone','$icq','$skype','$photo_link','$current_date')";
+        if($error!=1)
+        {
+            $db = new Database();
+            $db->connect();
+            $query = "INSERT INTO tbl_laf_items(item_type,category,region,city,title,description,person,email,phone,icq,skype,photo_link,date_entry)
+                                        values('$item_type','$category','$region','$city','$title','$description','$person','$email','$phone','$icq','$skype','$photo_link','$current_date')";
 
-        $db->executeQueryUTF($query);
-        $db->disconnect();
+            $db->executeQueryUTF($query);
+            $db->disconnect();
+        }
+        else
+        {
+            echo "Ой, ошибочка вышла...:(";
+        }
 		
 	
 	

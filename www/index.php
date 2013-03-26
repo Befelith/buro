@@ -28,6 +28,10 @@
          display: block;
          word-wrap: break-word;
      }
+     .date_width { width: 100px; }
+     .cat_width { width: 200px; }
+     .td_even{border: 2px solid #cef;background-color: #efe;padding:10px;}
+     .td_odd{border: 2px solid #cef;background-color: #def;padding:10px;}
      .nav-pages {list-style-type:none;} /*-ul*/
      .nav-pages li {float:left;padding: 4px; margin: 5px;}
      .nav-color:link, .nav-color:visited {color: blue;}
@@ -68,7 +72,6 @@
             <p>Right Column</p>
             <p>Right Column</p>
             <p>Right Column</p>
-
         </div>
         <div id='center'>
             <!-- Содержимое центральной колонки -->
