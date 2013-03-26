@@ -11,6 +11,7 @@
 
      html, body {margin:0;height:100%;}
      #header {height:200px;border: 1px solid #add8e6;}
+     #functionality{border: 1px solid blue;}
      #left {float:left;width:200px;border: 1px solid #add8e6;}
      #right {float:right;width:200px;border: 1px solid #add8e6;}
      #center {margin:0 200px 0 200px;border: 1px solid #add8e6;min-width: 570px;}
@@ -20,9 +21,9 @@
 
      .main-table
      {
-         height:100%;
+         height:90%;
          table-layout:fixed;
-         width: 98%;
+         width: 90%;
          margin: 0 auto;
          display: block;
          word-wrap: break-word;

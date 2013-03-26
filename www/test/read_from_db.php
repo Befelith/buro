@@ -35,7 +35,7 @@ while($line = mysql_fetch_array($result,MYSQL_ASSOC))
 			if($key!='PICTURE' and $key!='TITLE')
 				echo '<td style=" border: 2px solid #cef;background-color: #def;padding:10px;" align="center">'.$value.'</td>';
 			if($key=='TITLE') 
-				echo '<td style=" border: 2px solid #cefn;background-color: #def;padding:10px;" align="center"><a href="image.php?id='.$line["ID"].'">'.$value.'</a></td>';
+				echo '<td style=" border: 2px solid #cefn;background-color: #def;padding:10px;" align="center"><a href="item.php?id='.$line["ID"].'">'.$value.'</a></td>';
 			if($key=='PICTURE')
 				echo '<td style=" border: 2px solid #cef;background-color: #def;padding:10px;" align="center">'.'<img src="'.$value.'" alt="opa" width="50px" height="50px"/>'.'</td>';
 		}
@@ -44,7 +44,7 @@ while($line = mysql_fetch_array($result,MYSQL_ASSOC))
 			if($key!='PICTURE' and $key!='TITLE')
 				echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center">'.$value.'</td>';
 			if($key=='TITLE')
-				echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center"><a href="image.php?id='.$line["ID"].'">'.$value.'</a></td>';
+				echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center"><a href="item.php?id='.$line["ID"].'">'.$value.'</a></td>';
 			if($key=='PICTURE')
 				echo '<td style=" border: 2px solid #cef;background-color: #efe;padding:10px;" align="center">'.'<img src="'.$value.'" alt="opa" width="50px" height="50px"/>'.'</td>';
 		}

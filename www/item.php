@@ -1,5 +1,5 @@
 <?php	
-if(isset($_GET['id']))//call this by http://buro-nahodok.in.ua/image_output/image.php?id=5
+if(isset($_GET['id']))//call this by http://buro-nahodok.in.ua/image_output/item.php?id=5
 {
 		//1 открываем соедениние
 	$link = mysql_connect('localhost','root') or die('Failed connection'. mysql_error());
