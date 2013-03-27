@@ -10,7 +10,9 @@
      }
 
      html, body {margin:0;height:100%;}
-     #header {height:200px;border: 1px solid #add8e6;}
+     #header {position:relative;width:980px;height:500px;border: 1px solid #add8e6;background:url(images/header_487.png) no-repeat;background-position:center;margin: 0 auto;}
+     /*#header_image {position:absolute;left:50%;width:900px;height:500px;border: 1px solid #add8e6;background:url(images/header_487.png) no-repeat;}*/
+     #slogan{position:absolute;top:350px;left:50px;width: 400px; height: 100px;background-image: url(images/slogan_bg.png);}
      #functionality{border: 1px solid blue;}
      #left {float:left;width:200px;border: 1px solid #add8e6;}
      #right {float:right;width:200px;border: 1px solid #add8e6;}
@@ -19,6 +21,32 @@
      #footer {height:100px;margin-top:-100px;border: 1px solid #add8e6;}
      .clear {clear:both;}
 
+     .button_lost
+     {
+         border: none;
+         float: none;
+         display: block;
+         width: 100px;
+         padding: 8px 16px !important;
+         background: #E55E48;
+         color: #fff !important;
+         font: 600 19px/32px 'Open Sans', sans-serif;
+         text-align: center;
+     }
+     .button_found
+     {
+         position: absolute;
+         left: 150px;
+         border: none;
+         float: none;
+         display: block;
+         width: 100px;
+         padding: 8px 16px !important;
+         background: #E55E48;
+         color: #fff !important;
+         font: 600 19px/32px 'Open Sans', sans-serif;
+         text-align: center;
+     }
      .main-table
      {
          height:90%;
@@ -45,16 +73,21 @@
 <div id='wrapper'>
     <div id='header'>
         <!-- Содержимое хэдэра -->
-        <p>header here</p>
+            <div id='slogan'>
+                <p style='color: white; font-size: 35px; text-align: center;'>Бюро находок</p>
+            </div>
+
     </div>
     <div id="functionality">
         <!--Управление-->
         <p>Functional here</p>
         <?
         echo "<a href='index.php'>Home</a><br>";
-        echo "<a href='post_add.php?type=lost'>Потерял</a><br>";
-        echo "<a href='post_add.php?type=found'>Нашел</a><br>";
+//        echo "<a href='post_add.php?type=lost'>Потерял</a><br>";
+//        echo "<a href='post_add.php?type=found'>Нашел</a><br>";
         ?>
+        <a href='post_add.php?type=found' class="button_found">Нашел</a>
+        <a href='post_add.php?type=lost' class="button_lost">Потерял</a>
     </div>
 
         <div id='left'>
