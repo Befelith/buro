@@ -5,6 +5,7 @@ function pageNavigator($totalPages,$currentPage)
     {
         //echo "Current Page is: ".$_GET['page'];
         //echo $totalPages. '!!!!!!';
+        if($currentPage==NULL) $currentPage=1;
         $output="";
         $nextPage = $currentPage+1;
         $prevPage = $currentPage-1;

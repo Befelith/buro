@@ -18,15 +18,17 @@ function createMainTable($result)
 {
     $output_table="";
 
-    $output_table.= "<table class='main-table' style=\"border:3px solid #cef;border-collapse: collapse;\">";
+    $output_table.= "<table class='main-table'>";
     $odd_counter=0;
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     {
         $odd_counter++;
         //$output_table.='<col class="col1">';
         $output_table.= "<tr>\n";
+
         if($odd_counter%2!=0)
         {
+            //$output_table.="<th> $odd_counter </th>";
             $output_table.= '<td class="td_even" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].','.$line['city'].'</small>'.'</td>';
             $output_table.= '<td class="td_even date_width" align="center">'.today_date($line['date_entry']).'</td>';
             $output_table.= '<td class="td_even cat_width" align="center">'.$line['category'].'</td>';
@@ -37,6 +39,7 @@ function createMainTable($result)
         }
         else
         {
+
             $output_table.= '<td class="td_odd" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].','.$line['city'].'</small>'.'</td>';
             $output_table.= '<td class="td_odd date_width" align="center">'.today_date($line['date_entry']).'</td>';
             $output_table.= '<td class="td_odd cat_width" align="center">'.$line['category'].'</td>';
