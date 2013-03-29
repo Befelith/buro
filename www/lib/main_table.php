@@ -20,8 +20,14 @@ function createMainTable($result)
 
     $output_table.= "<table class='main-table'>";
     $odd_counter=0;
+    $output_table.= "<tr>";
+    $output_table.= "<th>Заголовок</th>";
+    $output_table.= "<th class='date_width'>Дата</th>";
+    $output_table.= "<th class='cat_width'>Категория</th>";
+    $output_table.= "</tr>";
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     {
+        //var_dump($line);
         $odd_counter++;
         //$output_table.='<col class="col1">';
         $output_table.= "<tr>\n";
