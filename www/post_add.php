@@ -31,11 +31,11 @@
 					<input type="hidden" name="item_type" value="<? echo $_GET['type']; ?>" />
 					<!--------------------Заголовок-------------------->
 					<div class="inputBlockSeparator">
-					<label class="fleft inputLabel">Заголовок<span class="asterisk">*</span></label>
-					<input type="text" name="title" id="titleInput" class="fleft validateInput finVal" maxlength="70" size="50px">
-					<div class="fleft errorDiv" id="titleError"></div>
-					<!--<span class="counter"></span>-->
-					<div class="counter clr" style="margin-left:30%;"></div>
+                        <label class="fleft inputLabel">Заголовок<span class="asterisk">*</span></label>
+                        <input type="text" name="title" id="titleInput" class="fleft validateInput finVal" maxlength="70" size="50px">
+                        <div class="fleft errorDiv" id="titleError"></div>
+                        <!--<span class="counter"></span>-->
+                        <div class="counter clr" style="margin-left:30%;"></div>
 					</div>
 					<div class="clr"></div>	
 					

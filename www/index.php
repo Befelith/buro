@@ -1,6 +1,8 @@
 <?php header('Content-type: text/html; charset=utf-8');?>
 <html>
 <head>
+    <script src="jquery-1.9.0.min.js"></script>
+<!--    <script src="ajax-filters.js"></script>-->
     <style type="text/css">
         #wrapper
         {
@@ -11,7 +13,6 @@
 
         html, body {margin:0;height:100%;}
 
-            /*http://www.templatemonster.com/ru/demo/42626.html сделать хедер как здесь*/
         #header {
             position:relative;
             /*width:980px;*/
@@ -46,7 +47,7 @@
             border: 1px solid #E5E5E5;
             margin: 0 auto; /*это чтоб центрировать контент при превышении max-width*/
             /*width: 980px; *//*можно везде поставить auto!*/
-            height: 100px;
+            height: 200px;
             background-color: #fafafa;
             /*background-color: #ff8850;*//* reactor*/
             /*background-color: #f4964e;;*/
@@ -122,7 +123,7 @@
         {
             /*position: relative;*//*added*/
             /*left: 15%;*//*added*/
-            height:90%;
+            /*height:90%;*/
             width: 80%; /*was 80%*/
             table-layout:fixed;
             margin: 0 auto;
@@ -142,7 +143,7 @@
             /*.td_odd{background-color: #F0F0F0;padding:10px;border-bottom: 1px solid #6fbec6;border-bottom: 1px solid #6fbec6;border-top: 10px solid white;}*/
             /*.td_odd a{text-decoration: none;}*/
             /*.td_odd a:link,.td_odd a:visited{color: #2e6dca;font-weight: bold;}*/
-        .main-table td{background-color: #F0F0F0;padding:10px; border-bottom: 1px solid #6fbec6;border-top: 8px solid white;}
+        .main-table td{background-color: #F0F0F0;padding:10px; border-bottom: 1px solid #6fbec6;border-top: 8px solid white;height: 80px;}
         .main-table td a{text-decoration: none;}
         .main-table td a:link,.td_even a:visited{color: #2e6dca;font-weight: bold;}
 
@@ -154,6 +155,7 @@
             font-family: 'Open Sans';
             font-family: sans-serif;
             padding: 10px;
+            height: 90px;
         }
 
         .nav-pages {list-style-type:none;} /*-ul*/
@@ -166,12 +168,23 @@
 
 
     </style>
+
+    <script>
+        function encodeInput(form)
+        {
+            //form.elements["cat"].value = encodeURIComponent(form.elements["cat"].value);
+            var e = document.getElementById('category_select');
+            e.options[e.selectedIndex].value= encodeURIComponent(e.options[e.selectedIndex].value);
+            //in form:  onsubmit="encodeInput(this)"
+        }
+    </script>
+
 </head>
 <body>
 <div id='wrapper'>
     <div id='top_section'>
         <div id='logo'>
-            <span style="disp"></span>
+
         </div>
         <div id='menu'>
             <ul>
@@ -190,6 +203,17 @@
             <a href='post_add.php?type=found' class="button_found">Нашел</a>
             <a href='post_add.php?type=lost' class="button_lost">Потерял</a>
         </div>
+        <div id='search_bar'>
+        <form action="index.php" method="GET" >
+            <select id='category_select' name="cat">
+                <?php
+                include_once("getCategories.php");
+                ?>
+            </select>
+            <input class="submitButton" id="submit" type="submit" value="GO">
+        </form>
+        </div>
+
     </div>
 
     <!--        <div id='left'>-->
