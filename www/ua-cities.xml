@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <regions>
-  <region name="Автономная Республика Крым">
+  <region name="Автономная Республика Крым" code="ARK">
     <city lat="44.4197222" lon="34.0430556" name="Алупка" />
     <city lat="44.6637211" lon="34.405013" name="Алушта" />
     <city lat="46.1072222" lon="33.6933333" name="Армянск" />

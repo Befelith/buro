@@ -3,6 +3,7 @@
 <head>
     <script src="jquery-1.9.0.min.js"></script>
 <!--    <script src="ajax-filters.js"></script>-->
+    <script src="ajaxCities.js"></script>
     <style type="text/css">
         #wrapper
         {
@@ -31,6 +32,7 @@
         }
         #logo{width: 30%;height:120px;position: absolute; leftt:0px;color:white;background: url(images/logo_blue.png) no-repeat center;}
         #menu {width: 70%;height:120px;position: absolute; right:0px;}
+        #menu ul{list-style-type: none;}
         #menu ul li{color: white;float:left;font-size: 18px;margin:5px;position: relative;left:20%;}
         #menu ul li a:link, #menu li a:visited {background: #5FAAE3;color: white;text-decoration: none;display: inline-block;width: 90px;height: 70px;line-height: 70px;text-align: center;
 
@@ -127,7 +129,7 @@
             width: 80%; /*was 80%*/
             table-layout:fixed;
             margin: 0 auto;
-            display: block;
+            /*display: block;*/
             word-wrap: break-word;
             border:1px solid #E5E5E5;
             border-collapse: separate;
@@ -163,7 +165,7 @@
         .nav-color:link, .nav-color:visited {color: blue;}
         .nav-color:hover {color: red; }
         #page-navigation {border: 2px solid red; height:10%;overflow: hidden;min-width: 570px;min-height:50px;height:50px;width: 50%; margin: 0 auto;display: block;} /*pagination div*/
-        #page-navigation ul{width:400px;margin:0px auto;}
+        #page-navigation ul{width:500px;margin:0px auto;}
 
 
 
@@ -189,8 +191,8 @@
         <div id='menu'>
             <ul>
                 <li><a href='http://buro/index.php'>Главная</a></li>
-                <li><a href='#'>Потери</a></li>
-                <li><a href='#'>Находки</a></li>
+                <li><a href='/index.php?ptype=lost'>Потери</a></li>
+                <li><a href='/index.php?ptype=found'>Находки</a></li>
                 <li><a href='#'>О нас</a></li>
             </ul>
         </div>
@@ -206,10 +208,27 @@
         <div id='search_bar'>
         <form action="index.php" method="GET" >
             <select id='category_select' name="cat">
+                <option value="all">Все</option>
                 <?php
                 include_once("getCategories.php");
                 ?>
             </select>
+
+            <select id="region"  name="region">
+                <option value="all">Все</option>
+                <?php
+                include_once("getRegions.php");
+                ?>
+            </select>
+            <select name="ptype">
+                <option value="all">Все</option>
+                <option value="lost">Потери</option>
+                <option value="found">Находки</option>
+            </select>
+
+<!--            <select id="city" name="city" style="visibility: hidden">-->
+<!--                <option value="Сначала выберите область">Сначала выберите область</option>-->
+<!--            </select>-->
             <input class="submitButton" id="submit" type="submit" value="GO">
         </form>
         </div>

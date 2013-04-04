@@ -27,30 +27,16 @@ function createMainTable($result)
     $output_table.= "</tr>";
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     {
-        //var_dump($line);
-        $odd_counter++;
-        //$output_table.='<col class="col1">';
         $output_table.= "<tr>\n";
-
-        if($odd_counter%2!=0)
-        {
-            //$output_table.="<th> $odd_counter </th>";
-            $output_table.= '<td class="td_even" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
-            $output_table.= '<td class="td_even date_width" align="center">'.today_date($line['date_entry']).'</td>';
-            $output_table.= '<td class="td_even cat_width" align="center">'.$line['category'].'</td>';
+        $output_table.= '<td class="td_even" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
+        $output_table.= '<td class="td_even date_width" align="center">'.today_date($line['date_entry']).'</td>';
+        $output_table.= '<td class="td_even cat_width" align="center">'.$line['category'].'</td>';
 
 
 
             //$output_table.='<td style=" border: 2px solid #cef;background-color: #def;padding:10px;" align="center">'.'<img src="'.$line['photo_link'].'" alt="opa" width="50px" height="50px"/>'.'</td>';
-        }
-        else
-        {
 
-            $output_table.= '<td class="td_odd" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
-            $output_table.= '<td class="td_odd date_width" align="center">'.today_date($line['date_entry']).'</td>';
-            $output_table.= '<td class="td_odd cat_width" align="center">'.$line['category'].'</td>';
 
-        }
 //        foreach($line as $key=>$value)
 //        {
 //            if($odd_counter%2!=0)

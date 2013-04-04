@@ -8,7 +8,6 @@ $categories = array(
     'wallets'=>'Кошельки:',
     'jewelery'=>'Драгоценности:',
     'other'=>'Другое:');
-echo '<option value="Выбрать">'.'Выбрать'.'</option>';
 foreach($categories as $key=>$value)
 {
 

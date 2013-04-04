@@ -17,27 +17,42 @@ $multiple_get_params = array(
 );
 
 
-
-
-
 function addGetParameters($query)
 {
     global $multiple_get_params;
+
+    if(isset($_GET['ptype']))
+    {
+        $multiple_get_params['ptype'] = $_GET['ptype'];
+        if($multiple_get_params['ptype'] == 'all')
+            $query .=" AND ptype LIKE '%' ";
+        elseif($multiple_get_params['ptype'] == 'lost')
+            $query.=" AND ptype='lost'";
+        else
+            $query.=" AND ptype='found'";
+    }
     if(isset($_GET["cat"]))
     {
         $multiple_get_params['cat'] = $_GET["cat"];//decode
-        $query .=" AND category='{$multiple_get_params['cat']}' ";
+        if($multiple_get_params['cat']!="all")
+            $query .=" AND category='{$multiple_get_params['cat']}' ";
+        else
+            $query .=" AND category LIKE '%' ";
     }
     if(isset($_GET["region"]))
     {
         $multiple_get_params['region'] = $_GET["region"];
-        $query .=" AND region='{$multiple_get_params['region']}' ";
+        if($multiple_get_params['region']!="all")
+            $query .=" AND region='{$multiple_get_params['region']}' ";
+        else
+            $query .=" AND region LIKE '%' ";
     }
     if(isset($_GET["city"]))
     {
         $multiple_get_params['city'] = $_GET["city"];
         $query .=" AND city='{$multiple_get_params['city']}' ";
     }
+
     return $query;
 }
 $rowsPerPage = 10;

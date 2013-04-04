@@ -43,7 +43,8 @@
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">Категория<span class="asterisk">*</span></label>
 					<select id="category"  name="category" class="fleft validateSelect finVal">
-					<?php 
+                    <option value="Выбрать">Выбрать</option>
+					<?php
 						include_once("getCategories.php");
 					?>
 					</select>
@@ -55,6 +56,7 @@
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">Регион<span class="asterisk">*</span></label>
 					<select id="region"  name="region" class="fleft validateSelect finVal">
+                    <option value="Выбрать">Выбрать</option>
 					<?php
 						include_once("getRegions.php");
                     ?>

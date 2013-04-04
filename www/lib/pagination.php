@@ -3,11 +3,19 @@ function pageNavigator($totalPages,$currentPage)
 {
     global $multiple_get_params;
     $addedGetParameters="";
+    $my_counter=0;
     if(count($multiple_get_params)>0)
     {
         foreach($multiple_get_params as $key=>$value)
         {
             $addedGetParameters.="&".$key."=".$value;
+//            $my_counter++;
+//            if($my_counter!=count($multiple_get_params))
+//                $addedGetParameters.=$key."=".$value."&";
+//            elseif($my_counter!=count($multiple_get_params) AND isset($_GET['page']))
+//                $addedGetParameters.=$key."=".$value."&";
+//            else
+//                $addedGetParameters.=$key."=".$value;
         }
     }
 
