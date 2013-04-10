@@ -22,7 +22,7 @@ function createMainTable($result)
     $odd_counter=0;
     $output_table.= "<tr>";
     $output_table.= "<th>Заголовок</th>";
-    $output_table.= "<th class='date_width'>Дата</th>";
+    $output_table.= "<th class='date_width'>Добавлено</th>";
     $output_table.= "<th class='cat_width'>Категория</th>";
     $output_table.= "</tr>";
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))

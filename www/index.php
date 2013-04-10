@@ -30,13 +30,13 @@
             /*background: url(images/body-bg.jpg);*/
             /*background: #efe;*/
         }
-        #logo{width: 30%;height:120px;position: absolute; leftt:0px;color:white;background: url(images/logo_blue.png) no-repeat center;}
+        #logo{width: 30%;height:120px;position: absolute; left:0px;color:white;background: url(images/logo_blue.png) no-repeat center;}
         #menu {width: 70%;height:120px;position: absolute; right:0px;}
         #menu ul{list-style-type: none;}
         #menu ul li{color: white;float:left;font-size: 18px;margin:5px;position: relative;left:20%;}
         #menu ul li a:link, #menu li a:visited {background: #5FAAE3;color: white;text-decoration: none;display: inline-block;width: 90px;height: 70px;line-height: 70px;text-align: center;
 
-            font-family: 'Open Sans';
+            /*font-family: 'Open Sans';*/
             font-family: sans-serif;
             font-weight: 600;
         }
@@ -137,7 +137,10 @@
 
         }
         .date_width { width: 100px; }
-        .cat_width { width: 200px; }
+
+        .cat_width { width: 200px;}
+
+
             /*.td_even{background-color: #F0F0F0;padding:10px;border-bottom: 1px solid #6fbec6;border-top: 10px solid white;}*/
             /*.td_even a{text-decoration: none;}*/
             /*.td_even a:link,.td_even a:visited{color: #2e6dca;font-weight: bold;}*/
@@ -149,7 +152,7 @@
         .main-table td a{text-decoration: none;}
         .main-table td a:link,.td_even a:visited{color: #2e6dca;font-weight: bold;}
 
-        th {
+        .main-table th {
             background: #a2a2a6; /* Цвет фона */
             text-align: center; /* Выравнивание по левому краю */
             color:white;
@@ -167,6 +170,40 @@
         #page-navigation {border: 2px solid red; height:10%;overflow: hidden;min-width: 570px;min-height:50px;height:50px;width: 50%; margin: 0 auto;display: block;} /*pagination div*/
         #page-navigation ul{width:500px;margin:0px auto;}
 
+        #search_bar{padding: 40px 10px 10px;}
+        #nav_form:first-child{margin-left: 10%;}
+        .wrap_sel
+        {
+            display: inline-block;
+            /*width: 100px;*/
+            height:40px;
+            border: 1px solid green;
+            float: left;
+            margin-right: 10px;
+            padding-left: 10px;
+            text-align: left;
+            background:#6fbec6; /*#5FAAE3;*/
+            color: #fff !important;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .wrap_sel select{height: 30px;margin:5px;/*background-color: #6fbec6;border: 1px solid white;color: #fff;*/}
+        #submit_go
+        {
+            height: 42px;
+            width: 50px;
+            text-align: center;
+            background:#E55E48;
+            color: #fff !important;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid #ff5241;;
+        }
+
+        .border_radius{ -moz-border-radius: 20px;-webkit-border-radius: 20px;-khtml-border-radius: 20px;border-radius: 3px;}
+        /*.wrap_sel{height: 30px;margin-top: 10px;}*/
 
 
     </style>
@@ -202,34 +239,44 @@
     <div id="functionality">
 
         <div id='choice_wrap'>
-            <a href='post_add.php?type=found' class="button_found">Нашел</a>
-            <a href='post_add.php?type=lost' class="button_lost">Потерял</a>
+            <a href='post_add.php?ptype=found' class="button_found">Нашел</a>
+            <a href='post_add.php?ptype=lost' class="button_lost">Потерял</a>
         </div>
-        <div id='search_bar'>
-        <form action="index.php" method="GET" >
-            <select id='category_select' name="cat">
-                <option value="all">Все</option>
-                <?php
-                include_once("getCategories.php");
-                ?>
-            </select>
 
-            <select id="region"  name="region">
-                <option value="all">Все</option>
-                <?php
-                include_once("getRegions.php");
-                ?>
-            </select>
-            <select name="ptype">
-                <option value="all">Все</option>
-                <option value="lost">Потери</option>
-                <option value="found">Находки</option>
-            </select>
+        <div id='search_bar'>
+        <form action="index.php" method="GET" id="nav_form">
+            <div class="wrap_sel border_radius">
+                <label for='category_select'>Категория:</label>
+                <select id='category_select' name="cat">
+                    <option value="all">Все</option>
+                    <?php
+                    include_once("getCategories.php");
+                    ?>
+                </select>
+
+            </div>
+            <div class="wrap_sel border_radius">
+                <label for="region_select">Область:</label>
+                <select id="region_select" name="region">
+                    <option value="all">Все</option>
+                    <?php
+                    include_once("getRegions.php");
+                    ?>
+                </select>
+            </div>
+            <div class="wrap_sel border_radius">
+                <label for="ptype_select">Тип:</label>
+                <select name="ptype" id="ptype_select">
+                    <option value="all">Все</option>
+                    <option value="lost">Потери</option>
+                    <option value="found">Находки</option>
+                </select>
+            </div>
 
 <!--            <select id="city" name="city" style="visibility: hidden">-->
 <!--                <option value="Сначала выберите область">Сначала выберите область</option>-->
 <!--            </select>-->
-            <input class="submitButton" id="submit" type="submit" value="GO">
+            <input id="submit_go" class=" border_radius" type="submit" value="GO">
         </form>
         </div>
 

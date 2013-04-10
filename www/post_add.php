@@ -28,7 +28,7 @@
             <div id="formWrapper">
                 <form enctype="multipart/form-data" id="myForm" action="confirm_page.php" method="post">
 					
-					<input type="hidden" name="item_type" value="<? echo $_GET['type']; ?>" />
+					<input type="hidden" name="ptype" value="<? echo $_GET['ptype']; ?>" />
 					<!--------------------Заголовок-------------------->
 					<div class="inputBlockSeparator">
                         <label class="fleft inputLabel">Заголовок<span class="asterisk">*</span></label>

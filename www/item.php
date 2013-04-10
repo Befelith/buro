@@ -1,6 +1,11 @@
-<?php	
+<?php
+include_once("lib/database.php");
+include_once("lib/tag_cleaner.php");
+
 if(isset($_GET['id']))//call this by http://buro-nahodok.in.ua/image_output/item.php?id=5
 {
+    $db = new Database();
+    $db->connect();
 		//1 открываем соедениние
 	$link = mysql_connect('localhost','root') or die('Failed connection'. mysql_error());
 	//echo "Connected successfull";
@@ -8,8 +13,12 @@ if(isset($_GET['id']))//call this by http://buro-nahodok.in.ua/image_output/item
 	//2 - выбираем БД
 	mysql_select_db("buro_nahodok_db") or die('Не удалось выбрать базу');
 
-	
-	$id = (int)$_GET['id'];
+    $id= tagCleaner($_GET['id']);
+    var_dump($id);
+	$id = (int)$id;
+    var_dump($id);
+
+
 	//$id=5;
 	if($id>0)
 		{
@@ -24,10 +33,16 @@ if(isset($_GET['id']))//call this by http://buro-nahodok.in.ua/image_output/item
 		{
 			$image = mysql_fetch_array($result);
 			//header("Content-type: image/*");
-			
+            echo "<HTML>";
+            echo "<HEAD>";
+            echo "<TITLE>".$image['title']."</TITLE>";
+            echo "</HEAD>";
+            echo "<body>";
 			echo '<div><img src="'.$image['photo_link'].'" alt="opa" /></div>'."<br>";
 			echo $image['title']."<br>";
 			echo $image['description']."<br>";
+            echo "</body>";
+            echo "</html>";
 			// echo "<pre>";
 			// var_dump($image);
 			// echo "</pre>";

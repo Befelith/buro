@@ -2,15 +2,9 @@
 header('Content-type: text/html; charset=utf-8');
 include_once("lib/database.php");
 include_once("lib/image_resizer.php");
+include_once("lib/tag_cleaner.php");
 
-function tagCleaner($var)
-{
-    $var = str_replace('"',"",$var);
-    $var = str_replace("'","",$var);
 
-    $var = strip_tags($var);
-    return $var;
-}
 	$error='0';
 	if(isset($_POST['title']))
 	{
@@ -56,6 +50,7 @@ function tagCleaner($var)
 	if(isset($_POST['email']))
 	{
 		$email = preg_replace('/\s\s+/', ' ',trim($_POST['email']));
+        $email = tagCleaner($email);
 		if(!filter_var($email,FILTER_VALIDATE_EMAIL))
 		$error='1';
 	}
@@ -87,10 +82,10 @@ function tagCleaner($var)
 	}
 	
 	$current_date = date("Y-m-d H:i:s"); //date('d-m-Y H:i');
-	$item_type = $_POST['item_type'];
+	$post_type = tagCleaner($_POST['ptype']);
 
     //echo "<pre>".var_dump($_FILES)."</pre>";
-
+    echo "<pre>".var_dump($_POST)."</pre>";
 
 	if($_FILES['userImage']['size']!=0)
 	{
@@ -110,8 +105,8 @@ function tagCleaner($var)
         {
             $db = new Database();
             $db->connect();
-            $query = "INSERT INTO tbl_laf_items(item_type,category,region,city,title,description,person,email,phone,icq,skype,photo_link,date_entry)
-                                        values('$item_type','$category','$region','$city','$title','$description','$person','$email','$phone','$icq','$skype','$photo_link','$current_date')";
+            $query = "INSERT INTO tbl_laf_items(ptype,category,region,city,title,description,person,email,phone,icq,skype,photo_link,date_entry)
+                                        values('$post_type','$category','$region','$city','$title','$description','$person','$email','$phone','$icq','$skype','$photo_link','$current_date')";
 
             $db->executeQueryUTF($query);
             $db->disconnect();

@@ -4,7 +4,7 @@
 include_once("lib/database.php");
 include_once("lib/main_table.php");
 include_once("lib/pagination.php");
-
+include_once("lib/tag_cleaner.php");
 $db = new Database();
 $db->connect();
 
@@ -23,7 +23,7 @@ function addGetParameters($query)
 
     if(isset($_GET['ptype']))
     {
-        $multiple_get_params['ptype'] = $_GET['ptype'];
+        $multiple_get_params['ptype'] = tagCleaner($_GET['ptype']);;
         if($multiple_get_params['ptype'] == 'all')
             $query .=" AND ptype LIKE '%' ";
         elseif($multiple_get_params['ptype'] == 'lost')
@@ -33,7 +33,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["cat"]))
     {
-        $multiple_get_params['cat'] = $_GET["cat"];//decode
+        $multiple_get_params['cat'] = tagCleaner($_GET["cat"]);//decode
         if($multiple_get_params['cat']!="all")
             $query .=" AND category='{$multiple_get_params['cat']}' ";
         else
@@ -41,7 +41,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["region"]))
     {
-        $multiple_get_params['region'] = $_GET["region"];
+        $multiple_get_params['region'] = tagCleaner($_GET["region"]);
         if($multiple_get_params['region']!="all")
             $query .=" AND region='{$multiple_get_params['region']}' ";
         else
@@ -49,7 +49,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["city"]))
     {
-        $multiple_get_params['city'] = $_GET["city"];
+        $multiple_get_params['city'] =tagCleaner( $_GET["city"]);
         $query .=" AND city='{$multiple_get_params['city']}' ";
     }
 
