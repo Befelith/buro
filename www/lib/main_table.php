@@ -28,7 +28,7 @@ function createMainTable($result)
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     {
         $output_table.= "<tr>\n";
-        $output_table.= '<td class="td_even" align="left"><a href="item.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
+        $output_table.= '<td class="td_even" align="left"><a href="index.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
         $output_table.= '<td class="td_even date_width" align="center">'.today_date($line['date_entry']).'</td>';
         $output_table.= '<td class="td_even cat_width" align="center">'.$line['category'].'</td>';
 

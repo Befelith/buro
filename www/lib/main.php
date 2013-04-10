@@ -1,10 +1,9 @@
 <?php
-
-
 include_once("lib/database.php");
 include_once("lib/main_table.php");
 include_once("lib/pagination.php");
 include_once("lib/tag_cleaner.php");
+
 $db = new Database();
 $db->connect();
 
@@ -16,7 +15,7 @@ $multiple_get_params = array(
 
 );
 
-
+// Добавляет все get параметры к запросу
 function addGetParameters($query)
 {
     global $multiple_get_params;
@@ -55,17 +54,16 @@ function addGetParameters($query)
 
     return $query;
 }
+
 $rowsPerPage = 10;
-//старт индекс без get
-if($_GET['page']==NULL)
+//старт индекс без get и не отдельный итем
+if($_GET['page']==NULL && !isset($_GET['id']))
 {
     $main_query = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items WHERE person LIKE '%' "; //WHERE category='$cur_cat' WHERE person LIKE '%'
 
     $main_query=addGetParameters($main_query);
     $main_query.=" ORDER BY date_entry DESC LIMIT 0,$rowsPerPage";
 }
-//if(isset($_GET["cat"]))
-//    $main_query = "SELECT id_entry,category,region,city,title,date_entry FROM tbl_laf_items WHERE category='$cur_cat' ORDER BY date_entry DESC LIMIT 0,$rowsPerPage ";
 
 if($_GET['page']!=NULL)
 {
@@ -82,34 +80,60 @@ if($_GET['page']!=NULL)
 
 }
 
+
+if(isset($_GET['id']))
+{
+    $id= tagCleaner($_GET['id']);
+    //var_dump($id);
+    $id = (int)$id;
+    //var_dump($id);
+    if($id>0)
+    {
+        $main_query = 'SELECT * from tbl_laf_items WHERE id_entry='.$id;
+    }
+}
+
 $result = $db->executeQueryUTF($main_query);
 
-//вывод таблицы
-echo createMainTable($result);
 
-// количество строк в таблице
-$main_query_rows_count = "SELECT COUNT(*) FROM tbl_laf_items WHERE person LIKE '%' ";
-$main_query_rows_count = addGetParameters($main_query_rows_count);
-
-$count = $db->executeQueryUTF($main_query_rows_count);
-
-$totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
-
-// общее количество страниц
-$totalPages = $totalRowsCount[0] / $rowsPerPage;
-// округление до большего
-$totalPages = ceil($totalPages);
-//текущая страница
-$currentPage = intval($_GET['page']);
-
-//Pagination output here
-echo pageNavigator($totalPages,$currentPage);
-
-echo '<pre>';
-var_dump(urlencode("Животные"));
-echo '</pre>';
+if(!isset($_GET['id']))
+{
+    //вывод таблицы
+    echo createMainTable($result);
 
 
+    // количество строк в таблице
+    $main_query_rows_count = "SELECT COUNT(*) FROM tbl_laf_items WHERE person LIKE '%' ";
+    $main_query_rows_count = addGetParameters($main_query_rows_count);
+
+    $count = $db->executeQueryUTF($main_query_rows_count);
+
+    $totalRowsCount = mysql_fetch_array($count,MYSQL_NUM);
+
+    // общее количество страниц
+    $totalPages = $totalRowsCount[0] / $rowsPerPage;
+    // округление до большего
+    $totalPages = ceil($totalPages);
+    //текущая страница
+    $currentPage = intval($_GET['page']);
+
+    //Pagination output here
+    echo pageNavigator($totalPages,$currentPage);
+
+    echo '<pre>';
+    var_dump(urlencode("Животные"));
+    echo '</pre>';
+}
+if(isset($_GET['id']))
+{
+    if ( mysql_num_rows( $result ) == 1 )
+    {
+        $image = mysql_fetch_array($result);
+        echo '<div><img src="'.$image['photo_link'].'" alt="opa" /></div>'."<br>";
+        echo $image['title']."<br>";
+        echo $image['description']."<br>";
+    }
+}
 
 mysql_free_result($result);
 $db->disconnect();

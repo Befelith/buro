@@ -25,16 +25,16 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="173" column="47" selection-start="6607" selection-end="6607" vertical-scroll-proportion="-3.6666667">
+            <state line="300" column="36" selection-start="11022" selection-end="11022" vertical-scroll-proportion="-39.23077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="item.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/item.php">
+        <entry file="file://$PROJECT_DIR$/www/test/item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -43,34 +43,7 @@
       <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/lib/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="64" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-0.35051546">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirm_page.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/confirm_page.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="130" selection-end="166" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tag_cleaner.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/lib/tag_cleaner.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="1" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_add.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/post_add.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="31" selection-start="6131" selection-end="6135" vertical-scroll-proportion="-8.784314">
+            <state line="58" column="42" selection-start="1589" selection-end="1589" vertical-scroll-proportion="-0.68155783">
               <folding />
             </state>
           </provider>
@@ -79,7 +52,7 @@
       <file leaf-file-name="main_table.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/lib/main_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="53" selection-start="707" selection-end="707" vertical-scroll-proportion="-7.16">
+            <state line="30" column="72" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,11 +73,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/www/lib/main_table.php" />
         <option value="$PROJECT_DIR$/www/post_add.php" />
         <option value="$PROJECT_DIR$/www/index.php" />
         <option value="$PROJECT_DIR$/www/lib/tag_cleaner.php" />
         <option value="$PROJECT_DIR$/www/confirm_page.php" />
+        <option value="$PROJECT_DIR$/www/lib/main_table.php" />
         <option value="$PROJECT_DIR$/www/item.php" />
         <option value="$PROJECT_DIR$/www/lib/main.php" />
       </list>
@@ -261,14 +234,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6703786" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6703786" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -335,51 +308,51 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="47" selection-start="6607" selection-end="6607" vertical-scroll-proportion="-3.6666667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/post_add.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="31" selection-start="6131" selection-end="6135" vertical-scroll-proportion="-8.784314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/main_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="53" selection-start="707" selection-end="707" vertical-scroll-proportion="-7.16">
+        <state line="133" column="27" selection-start="6131" selection-end="6131" vertical-scroll-proportion="2.6694214">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/lib/tag_cleaner.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="1" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
+        <state line="15" column="1" selection-start="315" selection-end="315" vertical-scroll-proportion="0.29209623">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/confirm_page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="130" selection-end="166" vertical-scroll-proportion="0.0">
+        <state line="4" column="0" selection-start="130" selection-end="166" vertical-scroll-proportion="0.07906977">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/item.php">
+    <entry file="file://$PROJECT_DIR$/www/lib/main_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
+        <state line="30" column="72" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="300" column="36" selection-start="11022" selection-end="11022" vertical-scroll-proportion="-39.23077">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/test/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/lib/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="64" selection-start="1394" selection-end="1394" vertical-scroll-proportion="-0.35051546">
+        <state line="58" column="42" selection-start="1589" selection-end="1589" vertical-scroll-proportion="-0.68155783">
           <folding />
         </state>
       </provider>
