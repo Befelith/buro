@@ -1,5 +1,54 @@
 <?php header('Content-type: text/html; charset=utf-8');?>
 <html>
+<?
+include_once("lib/database.php");
+include_once("lib/my_functions.php");
+
+$title="Главная";
+$description ="";
+if(isset($_GET['id']) && $_GET['id']!=NULL)
+{
+    $db = new Database();
+    $db->connect();
+    $id= tagCleaner($_GET['id']);
+    $id = (int)$id;
+    if($id>0)
+    {
+        $main_query = 'SELECT * from tbl_laf_items WHERE id_entry='.$id;
+    }
+    $result = $db->executeQueryUTF($main_query);
+    if ( mysql_num_rows( $result ) == 1 )
+    {
+        $item = mysql_fetch_array($result);
+        $title=$item['title'];
+        if(mb_strlen(($item['description']),'utf-8')>=156)
+        {
+            $description=mb_substr($item['description'],0,156,'utf-8');
+        }
+        else
+            $description=$item['description'];
+    }
+}
+if(isset($_GET['ptype'])&& $_GET['ptype']!="all")
+{
+    $cur_type=tagCleaner($_GET['ptype']);
+    if($cur_type=='lost') $title="Потери";
+    if($cur_type=='found') $title="Находки";
+
+}
+if(isset($_GET['cat'])&& $_GET['cat']!="all")
+    $title.=" | ".tagCleaner($_GET['cat']);
+
+if(isset($_GET['region']) && $_GET['region']!="all")
+    $title.=" | ".tagCleaner($_GET['region']);
+if(isset($_GET['city'])&& $_GET['city']!="all")
+    $title.=" | ".tagCleaner($_GET['city']);
+
+?>
+
+<meta name="description" content="<?echo $description;?>" />
+<title><? echo $title; ?></title>
+
 <head>
     <script src="jquery-1.9.0.min.js"></script>
 <!--    <script src="ajax-filters.js"></script>-->
@@ -136,6 +185,23 @@
             border-spacing: 0px 10px;
 
         }
+        #item_details{display: inline-block;width: 100%;background: #fafafa;}
+        #item_details_table
+        {
+            /*table-layout:fixed;*/
+            margin: 10px;
+            /*display: block;*/
+            word-wrap: break-word;
+            border:1px solid #E5E5E5;
+            /*border-collapse: separate;*/
+            /*border-spacing: 0px 10px;*/
+        }
+        #item_details_image
+        {
+            border:1px solid #E5E5E5;
+            padding: 10px;
+            margin: 10px;
+        }
         .date_width { width: 100px; }
 
         .cat_width { width: 200px;}
@@ -151,7 +217,7 @@
         .main-table td{background-color: #F0F0F0;padding:10px; border-bottom: 1px solid #6fbec6;border-top: 8px solid white;height: 80px;}
         .main-table td a{text-decoration: none;}
         .main-table td a:link,.td_even a:visited{color: #2e6dca;font-weight: bold;}
-
+        .main-table tr:hover td{border: 1px solid #6fbec6;} /*for all td's in a row*/
         .main-table th {
             background: #a2a2a6; /* Цвет фона */
             text-align: center; /* Выравнивание по левому краю */
@@ -189,10 +255,10 @@
             font-size: 14px;
         }
         .wrap_sel select{height: 30px;margin:5px;/*background-color: #6fbec6;border: 1px solid white;color: #fff;*/}
-        #submit_go
+        .submit_go
         {
             height: 42px;
-            width: 50px;
+            width: 70px;
             text-align: center;
             background:#E55E48;
             color: #fff !important;
@@ -201,7 +267,8 @@
             font-size: 14px;
             border: 1px solid #ff5241;;
         }
-
+        /*.submit_go:hover{background: green;}*/
+        #nav_form input[type="submit"]:hover{background: #5FAAE3;}
         .border_radius{ -moz-border-radius: 20px;-webkit-border-radius: 20px;-khtml-border-radius: 20px;border-radius: 3px;}
         /*.wrap_sel{height: 30px;margin-top: 10px;}*/
 
@@ -276,7 +343,7 @@
 <!--            <select id="city" name="city" style="visibility: hidden">-->
 <!--                <option value="Сначала выберите область">Сначала выберите область</option>-->
 <!--            </select>-->
-            <input id="submit_go" class=" border_radius" type="submit" value="GO">
+            <input class="submit_go border_radius" type="submit" value="Вперед">
         </form>
         </div>
 
@@ -298,7 +365,7 @@
     <!--        </div>-->
     <div id='center'>
         <!-- Содержимое центральной колонки -->
-        <?php include_once("lib/main.php");?>
+        <?php include_once("main.php");?>
         <p>Center div</p>
     </div>
 

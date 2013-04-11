@@ -25,26 +25,70 @@ class ImageResizer
             }
 
             list($base_width,$base_height) = getimagesize($uploaded_file);
-            $new_width = 500;
-            $new_height = ($base_height / $base_width)*$new_width;
-
-            //новый пустой файл с нужными размерами
-            $new = imagecreatetruecolor($new_width,$new_height);
-
-            // ресэмплирование, копирует в tmp картинку из src
-            imagecopyresampled($new,$src,0,0,0,0,$new_width,$new_height,$base_width,$base_height);
-            //полный путь с хэш-именем файла
-            $dest_filename = $this->hashed_filename().$this->getExtension($image_type);
-            // !['tmp_name']
-            //new - созданный временный уменьшенный файл, filename - новый файл, 100- качество
-            switch($image_type)
+            if($base_width>=500)
             {
-                case 'image/jpeg': imagejpeg($new,$dest_filename,50);break;
-                case 'image/png' : imagepng($new,$dest_filename,9); break;
-                case 'image/gif' : imagegif($new,$dest_filename); break;
+                $new_width = 500;
+                $new_height = ($base_height / $base_width)*$new_width;
+
+                if($new_height>500)
+                {
+                    $new_height = 500;
+                    $new_width= ($base_width / $base_height) * $new_height;
+                }
+
+                //новый пустой файл с нужными размерами
+                $new = imagecreatetruecolor($new_width,$new_height);
+
+                // ресэмплирование, копирует в tmp картинку из src
+                imagecopyresampled($new,$src,0,0,0,0,$new_width,$new_height,$base_width,$base_height);
+                //полный путь с хэш-именем файла
+                $dest_filename = $this->hashed_filename().$this->getExtension($image_type);
+                // !['tmp_name']
+                //new - созданный временный уменьшенный файл, filename - новый файл, 100- качество
+                switch($image_type)
+                {
+                    case 'image/jpeg': imagejpeg($new,$dest_filename,50);break;
+                    case 'image/png' : imagepng($new,$dest_filename,9); break;
+                    case 'image/gif' : imagegif($new,$dest_filename); break;
+                }
+                imagedestroy($new);
+                imagedestroy($src);
+
             }
-            imagedestroy($new);
-            imagedestroy($src);
+            elseif($base_height>500)
+            {
+                $new_height = 500;
+                $new_width= ($base_width / $base_height) * $new_height;
+                if($new_width>500)
+                {
+                    $new_width = 500;
+                    $new_height = ($base_height / $base_width)*$new_width;
+                }
+                //новый пустой файл с нужными размерами
+                $new = imagecreatetruecolor($new_width,$new_height);
+
+                // ресэмплирование, копирует в tmp картинку из src
+                imagecopyresampled($new,$src,0,0,0,0,$new_width,$new_height,$base_width,$base_height);
+                //полный путь с хэш-именем файла
+                $dest_filename = $this->hashed_filename().$this->getExtension($image_type);
+                // !['tmp_name']
+                //new - созданный временный уменьшенный файл, filename - новый файл, 100- качество
+                switch($image_type)
+                {
+                    case 'image/jpeg': imagejpeg($new,$dest_filename,50);break;
+                    case 'image/png' : imagepng($new,$dest_filename,9); break;
+                    case 'image/gif' : imagegif($new,$dest_filename); break;
+                }
+                imagedestroy($new);
+                imagedestroy($src);
+            }
+            else
+            {
+
+                $dest_filename = $this->hashed_filename().$this->getExtension($image_type);
+                file_put_contents($dest_filename,file_get_contents($uploaded_file));
+
+            }
         }
         else
         {

@@ -1,19 +1,5 @@
 <?php
-function today_date($full_date)
-{
-    list($date,$time) = explode(" ",$full_date);
-    list($year,$month,$day) = explode("-",$date);
-    list($hour,$minute) = explode(":",$time);
 
-    if($date==date("Y-m-d"))
-        $result = "Сегодня"."<br>".$hour.":".$minute;
-    elseif((date("d")-$day)==1)
-        $result = "Вчера"."<br>".$hour.":".$minute;
-    else
-        $result = $day."-".$month."-".$year."<br>".$hour.":".$minute;
-
-    return $result;
-}
 function createMainTable($result)
 {
     $output_table="";
@@ -27,7 +13,7 @@ function createMainTable($result)
     $output_table.= "</tr>";
     while($line = mysql_fetch_array($result,MYSQL_ASSOC))
     {
-        $output_table.= "<tr>\n";
+        $output_table.= "<tr>";
         $output_table.= '<td class="td_even" align="left"><a href="index.php?id='.$line["id_entry"].'">'.$line['title'].'</a>'.'<br>'.'<small>'.$line['region'].', '.$line['city'].'</small>'.'</td>';
         $output_table.= '<td class="td_even date_width" align="center">'.today_date($line['date_entry']).'</td>';
         $output_table.= '<td class="td_even cat_width" align="center">'.$line['category'].'</td>';

@@ -2,7 +2,7 @@
 header('Content-type: text/html; charset=utf-8');
 include_once("lib/database.php");
 include_once("lib/image_resizer.php");
-include_once("lib/tag_cleaner.php");
+include_once("lib/my_functions.php");
 
 
 	$error='0';
@@ -82,12 +82,16 @@ include_once("lib/tag_cleaner.php");
 	}
 	
 	$current_date = date("Y-m-d H:i:s"); //date('d-m-Y H:i');
-	$post_type = tagCleaner($_POST['ptype']);
+    if(isset($_POST['ptype']) && ($_POST['ptype']=='lost'|| $_POST['ptype']=='found') )
+	    $post_type = tagCleaner($_POST['ptype']);
+    else
+        $error='1';
+
 
     //echo "<pre>".var_dump($_FILES)."</pre>";
-    echo "<pre>".var_dump($_POST)."</pre>";
+    //echo "<pre>".var_dump($_POST)."</pre>";
 
-	if($_FILES['userImage']['size']!=0)
+	if($_FILES['userImage']['size']!=0 && $error!='1')
 	{
         $another_commit_test="hello";
 		$max_image_size = 2048 * 1024; //2mb
