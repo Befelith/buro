@@ -17,5 +17,5 @@ function tagCleaner($var)
     return $var;
 }
 $text = $_POST['mytext'];
-echo tagCleaner($text);
+echo defender_xss($text);
 ?>

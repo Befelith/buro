@@ -88,7 +88,7 @@
 					<div class="inputBlockSeparator">
 					<input type="hidden" name="MAX_FILE_SIZE" value="2097152"/>
 					<label class="fleft inputLabel">Картинка<span class="asterisk"></span></label>
-					<input name="userImage" class="fleft" id="imageInput" type="file" accept="image/x-png, image/gif, image/jpeg" value=""></input>
+					<input name="userImage" class="fleft" id="imageInput" type="file" accept="image/x-png, image/gif, image/jpeg" value="">
 					<div class="fleft errorDiv" id="imageError"></div>
 					</div>
 					<div class="clr"></div>
@@ -96,7 +96,7 @@
 					<!--------------------Контактное лицо-------------------->
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">Контактное лицо<span class="asterisk">*</span></label>
-					<input id="personInput" type="text" name="person" class="fleft validateInput finVal" maxlength="60" size="30px"></input>
+					<input id="personInput" type="text" name="person" class="fleft validateInput finVal" maxlength="60" size="30px">
 					<div class="fleft errorDiv" id="personError"></div>
 					</div>
 					<div class="clr"></div>
@@ -104,7 +104,7 @@
 					<!--------------------E-mail-------------------->
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">E-mail<span class="asterisk">*</span></label>
-					<input id="emailInput" type="text" name="email" class="fleft validateInput finVal" maxlength="60" size="30px"></input>
+					<input id="emailInput" type="text" name="email" class="fleft validateInput finVal" maxlength="60" size="30px">
 					<div class="fleft errorDiv" id="emailError"></div>
 					</div>
 					<div class="clr"></div>
@@ -112,26 +112,26 @@
 					<!--------------------Номер телефона-------------------->
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">Номер телефона<span class="asterisk"></span></label>
-					<input type="text" name="phone"  class="finVal" maxlength="60" size="30px"></input>
+					<input type="text" name="phone"  class="finVal" maxlength="60" size="30px">
 					</div>
 					<div class="clr"></div>
 					
 					<!--------------------ICQ-------------------->
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">ICQ<span class="asterisk"></span></label>
-					<input type="text" name="icq"  class="finVal" maxlength="10" size="30px"></input>
+					<input type="text" name="icq"  class="finVal" maxlength="10" size="30px">
 					</div>
 					<div class="clr"></div>
 					
 					<!--------------------Skype-------------------->
 					<div class="inputBlockSeparator">
 					<label class="fleft inputLabel">Skype<span class="asterisk"></span></label>
-					<input type="text" name="skype" class="finVal" maxlength="32" size="30px"></input>
+					<input type="text" name="skype" class="finVal" maxlength="32" size="30px">
 					</div>
 					<div class="clr"></div>
 					
 					<!--------------------Правила-------------------->
-					<input type="checkbox" name="terms" class="fleft validateSelect finVal" id="termsCB" value="yes"></input>
+					<input type="checkbox" name="terms" class="fleft validateSelect finVal" id="termsCB" value="yes">
 					<label for="termsCB" class="fleft">С <a href="#">правилами</a> ознакомлен</label>
 					<div class="fleft errorDiv" id="termsError"></div>
 					<div class="clr"></div>

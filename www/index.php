@@ -4,13 +4,13 @@
 include_once("lib/database.php");
 include_once("lib/my_functions.php");
 
-$title="Главная";
+$title="Бюро находок в Украине";
 $description ="";
 if(isset($_GET['id']) && $_GET['id']!=NULL)
 {
     $db = new Database();
     $db->connect();
-    $id= tagCleaner($_GET['id']);
+    $id= defender_xss($_GET['id']);
     $id = (int)$id;
     if($id>0)
     {
@@ -31,18 +31,18 @@ if(isset($_GET['id']) && $_GET['id']!=NULL)
 }
 if(isset($_GET['ptype'])&& $_GET['ptype']!="all")
 {
-    $cur_type=tagCleaner($_GET['ptype']);
+    $cur_type=defender_xss($_GET['ptype']);
     if($cur_type=='lost') $title="Потери";
     if($cur_type=='found') $title="Находки";
 
 }
 if(isset($_GET['cat'])&& $_GET['cat']!="all")
-    $title.=" | ".tagCleaner($_GET['cat']);
+    $title.=" | ".defender_xss($_GET['cat']);
 
 if(isset($_GET['region']) && $_GET['region']!="all")
-    $title.=" | ".tagCleaner($_GET['region']);
+    $title.=" | ".defender_xss($_GET['region']);
 if(isset($_GET['city'])&& $_GET['city']!="all")
-    $title.=" | ".tagCleaner($_GET['city']);
+    $title.=" | ".defender_xss($_GET['city']);
 
 ?>
 

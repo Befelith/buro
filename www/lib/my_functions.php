@@ -6,13 +6,22 @@
  * Time: 16:01
  * To change this template use File | Settings | File Templates.
  */
-function tagCleaner($var)
+function strip_slashes_recursive( $variable )
 {
-    $var = str_replace('"',"",$var);
-    $var = str_replace("'","",$var);
+    if ( is_string( $variable ) )
+        return stripslashes( $variable ) ;
+    if ( is_array( $variable ) )
+        foreach( $variable as $i => $value )
+            $variable[ $i ] = strip_slashes_recursive( $value ) ;
 
-    $var = strip_tags($var);
-    return $var;
+    return $variable ;
+}
+function defender_xss($input_text)
+{
+    $filter = array("<",">","'",'"',"=","/","\\","(",")",";","input", "union", "script", "select", "update", "script", "www", "http");
+    $output_text = str_replace($filter,"",$input_text);
+    $output_text=strip_slashes_recursive($output_text);
+    return $output_text;
 }
 function today_date($full_date)
 {

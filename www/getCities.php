@@ -1,6 +1,6 @@
 ﻿<?php	
 	if(isset($_POST['cityId'])){
-       $id = $_POST['cityId'];
+       $id =$_POST['cityId'];
 	   
 	   if(file_exists("ua-cities.xml"))
        {

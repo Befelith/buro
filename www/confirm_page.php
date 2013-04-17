@@ -9,40 +9,40 @@ include_once("lib/my_functions.php");
 	if(isset($_POST['title']))
 	{
 		$title = preg_replace('/\s\s+/', ' ',trim($_POST['title']));
-        $title= tagCleaner($title);
+        $title= defender_xss($title);
 
 		if(mb_strlen($title,'utf-8')<4)
 		$error='1';
 	}
 	if(isset($_POST['category']))
 	{
-		$category = $_POST['category'];
+		$category = defender_xss($_POST['category']);
 		if($category=="Выбрать")
 			$error='1';
 	}
 	if(isset($_POST['region']))
 	{
-		$region = $_POST['region'];
+		$region = defender_xss($_POST['region']);
 		if($region=="Выбрать")
 			$error='1';		
 	}
 	if(isset($_POST['city']))
 	{
-		$city = $_POST['city'];
+		$city = defender_xss($_POST['city']);
 		if($city=="Выбрать")
 		$error='1';
 	}
 	if(isset($_POST['description']))
 	{
 		$description = preg_replace('/\s\s+/', ' ',trim($_POST['description']));
-        $description = tagCleaner($description);
+        $description = defender_xss($description);
 		if(mb_strlen($description,'utf-8')<12)
 		$error='1';
 	}
 	if(isset($_POST['person']))
 	{
 		$person = preg_replace('/\s\s+/', ' ',trim($_POST['person']));
-        $person = tagCleaner($person);
+        $person = defender_xss($person);
 		if(mb_strlen($person,'utf-8')<2)
 		$error='1';
 		
@@ -50,32 +50,34 @@ include_once("lib/my_functions.php");
 	if(isset($_POST['email']))
 	{
 		$email = preg_replace('/\s\s+/', ' ',trim($_POST['email']));
-        $email = tagCleaner($email);
+        $email = defender_xss($email);
 		if(!filter_var($email,FILTER_VALIDATE_EMAIL))
 		$error='1';
 	}
 	if(isset($_POST['phone']))
 	{
-		$phone = $_POST['phone'];
-        $phone = tagCleaner($phone);
+        $phone = preg_replace('/\s\s+/', ' ',trim($_POST['phone']));
+        $phone = defender_xss($_POST['phone']);
+        if(mb_strlen($icq,'utf-8')>60)
+            $error='1';
 	}
 	if(isset($_POST['icq']))
 	{
 		$icq = preg_replace('/\s\s+/', ' ',trim($_POST['icq']));
-        $icq = tagCleaner($icq);
+        $icq = defender_xss($icq);
 		if(mb_strlen($icq,'utf-8')>10)
 		$error='1';
 	}
 	if(isset($_POST['skype']))
 	{
 		$skype = preg_replace('/\s\s+/', ' ',trim($_POST['skype']));
-        $skype = tagCleaner($skype);
+        $skype = defender_xss($skype);
 		if(mb_strlen($icq,'utf-8')>32)
 		$error='1';
 	}
 	if(isset($_POST['terms']))
 	{
-		$terms = $_POST['terms'];
+		$terms = defender_xss($_POST['terms']);
 		if($terms!="yes")
 		$error='1';
 
@@ -83,7 +85,7 @@ include_once("lib/my_functions.php");
 	
 	$current_date = date("Y-m-d H:i:s"); //date('d-m-Y H:i');
     if(isset($_POST['ptype']) && ($_POST['ptype']=='lost'|| $_POST['ptype']=='found') )
-	    $post_type = tagCleaner($_POST['ptype']);
+	    $post_type = defender_xss($_POST['ptype']);
     else
         $error='1';
 

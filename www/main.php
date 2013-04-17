@@ -19,10 +19,10 @@ $multiple_get_params = array(
 function addGetParameters($query)
 {
     global $multiple_get_params;
-
+//where_is_set ??
     if(isset($_GET['ptype']))
     {
-        $multiple_get_params['ptype'] = tagCleaner($_GET['ptype']);;
+        $multiple_get_params['ptype'] = defender_xss($_GET['ptype']);;
         if($multiple_get_params['ptype'] == 'all')
             $query .=" AND ptype LIKE '%' ";
         elseif($multiple_get_params['ptype'] == 'lost')
@@ -32,7 +32,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["cat"]))
     {
-        $multiple_get_params['cat'] = tagCleaner($_GET["cat"]);//decode
+        $multiple_get_params['cat'] = defender_xss($_GET["cat"]);//decode
         if($multiple_get_params['cat']!="all")
             $query .=" AND category='{$multiple_get_params['cat']}' ";
         else
@@ -40,7 +40,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["region"]))
     {
-        $multiple_get_params['region'] = tagCleaner($_GET["region"]);
+        $multiple_get_params['region'] = defender_xss($_GET["region"]);
         if($multiple_get_params['region']!="all")
             $query .=" AND region='{$multiple_get_params['region']}' ";
         else
@@ -48,7 +48,7 @@ function addGetParameters($query)
     }
     if(isset($_GET["city"]))
     {
-        $multiple_get_params['city'] =tagCleaner( $_GET["city"]);
+        $multiple_get_params['city'] =defender_xss( $_GET["city"]);
         $query .=" AND city='{$multiple_get_params['city']}' ";
     }
 
@@ -68,7 +68,7 @@ if($_GET['page']==NULL && !isset($_GET['id']))
 if($_GET['page']!=NULL)
 {
     //текущая страница
-    $currentPage = intval($_GET['page']);
+    $currentPage = intval(defender_xss($_GET['page']));
     //стартовый индекс для запроса в БД
     $limitStartIndex = ($currentPage."0")-$rowsPerPage; //For $rowsPerPage = 10;
     //$limitStartIndex = ($currentPage."0")*2-$rowsPerPage; //$rowsPerPage = 20;
@@ -83,7 +83,7 @@ if($_GET['page']!=NULL)
 
 if(isset($_GET['id']) && $_GET['id']!=NULL)
 {
-    $id= tagCleaner($_GET['id']);
+    $id= defender_xss($_GET['id']);
     //var_dump($id);
     $id = (int)$id;
     //var_dump($id);
@@ -115,7 +115,7 @@ if(!isset($_GET['id']))
     // округление до большего
     $totalPages = ceil($totalPages);
     //текущая страница
-    $currentPage = intval($_GET['page']);
+    $currentPage = intval(defender_xss($_GET['page']));
 
     //Pagination output here
     if($totalPages>1)
