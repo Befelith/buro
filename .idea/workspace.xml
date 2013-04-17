@@ -38,19 +38,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="42" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
+            <state line="25" column="5" selection-start="503" selection-end="503" vertical-scroll-proportion="0.48682705">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my_functions.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pagination.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/lib/pagination.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="40" selection-start="124" selection-end="129" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my_functions.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/lib/my_functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="134" selection-start="631" selection-end="631" vertical-scroll-proportion="0.38946164">
+            <state line="20" column="134" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,6 +180,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buro" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -249,7 +276,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -385,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/pagination.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="40" selection-start="124" selection-end="129" vertical-scroll-proportion="-0.05154639">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="14" selection-start="201" selection-end="206" vertical-scroll-proportion="-2.6666667">
@@ -406,16 +426,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/main.php">
+    <entry file="file://$PROJECT_DIR$/www/lib/my_functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="42" selection-start="1871" selection-end="1871" vertical-scroll-proportion="0.0">
+        <state line="20" column="134" selection-start="631" selection-end="631" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/lib/my_functions.php">
+    <entry file="file://$PROJECT_DIR$/www/lib/pagination.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="134" selection-start="631" selection-end="631" vertical-scroll-proportion="0.38946164">
+        <state line="7" column="40" selection-start="124" selection-end="129" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="5" selection-start="503" selection-end="503" vertical-scroll-proportion="0.48682705">
           <folding />
         </state>
       </provider>
